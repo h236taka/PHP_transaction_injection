@@ -6,6 +6,39 @@
 </head>
 <body>
   <?php
+
+  session_start();
+  //register.phpのticket変数を取得
+  $ticket = isset($_POST['ticket']) ? $_POST['ticket'] : '';
+  /*if ( !isset($_POST['ticket']) ){
+    $ticket = $_POST['ticket'];
+  }*/
+
+  //セッション変数に保存されたワンタイムチケットを取得
+  $saveTicket = isset($_SESSION['ticket']) ? $_SESSION['ticket'] : '';
+  /*if ( !isset($_SESSION['ticket']) ){
+    $saveTicket = $_SESSION['ticket'];
+  }*/
+
+
+  //セッション変数を解放
+  unset($_SESSION['ticket']);
+
+  //ワンタイムチケットの中身が空、ポストされなかった場合、強制終了
+  if ( $ticket === "" ){
+    die('不正な操作が行われました<br>');
+  }
+
+  //ポストされたワンタイムチケットとセッション変数が一致したら、処理を行う
+  if ( $ticket === $saveTicket ){
+    //OK
+  }
+  else{
+    echo '二重送信が行われました<br>';
+    echo '<a href="http://localhost/PBL_monday/register.php">画面を戻る</a>';
+    exit();
+  }
+
   //database information
   $username = 'root';
   $password = '';
@@ -15,25 +48,39 @@
   $eventname = $_POST['eventname'];
 
   //about files
-  //$tempfile = $_FILES['eventfile']['tmp_name'];
-  //$filename = $_FILES['eventfile']['name'];
+  $tempfile = $_FILES['eventfile']['tmp_name'];
+  $filename = $_FILES['eventfile']['name'];
 
-  $filename = 'file'; //仮に設定
+  //$filename = 'file'; //仮に設定
 
   $eventdate = $_POST['eventdate'];
   $eventplace = $_POST['eventplace'];
   $eventcontent = $_POST['eventcontent'];
 
-  echo $eventname.'<br>';
+  /*echo $eventname.'<br>';
   echo $eventdate.'<br>';
   echo $eventplace.'<br>';
-  echo $eventcontent.'<br>';
+  echo $eventcontent.'<br>';*/
 
-  if ( $eventname == "" || $eventdate == "" || $eventplace == "" || $eventcontent == "" || $filename == "" ){
-    echo "全ての項目を入力してください";
+  if ( $eventname == "" || $eventdate == "" || $eventplace == "" || $filename == "" ){
+    echo "全ての項目を入力してください<br>";
+    echo '<a href="http://localhost/PBL_monday/register.php">画面を戻る</a>';
     exit();
   }
   else{
+    if ( is_uploaded_file($tempfile) ){
+      if ( $_FILES['eventfile']['type'] == 'image/jpeg' || $_FILES['eventfile']['type'] == 'image/png' || $_FILES['eventfile']['type'] == 'image/jpg' ){
+        echo '画像がアップロードされました<br>';
+        echo "ファイルの種類は".$_FILES['eventfile']['type']."です。";
+        echo '<br>';
+      }
+      else{
+        echo "画像ファイルをアップロードしてください<br>";
+        echo '<a href="http://localhost/PBL_monday/register.php">画面を戻る</a>';
+        exit();
+      }
+    }
+
     try {
       $pdo = new PDO($dsn,$username,$password);
       echo 'データベースに接続しました<br>';
