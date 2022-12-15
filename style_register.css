@@ -1,0 +1,68 @@
+.logo {
+  text-align: center;
+  color: #5e7fca;
+  font-size: 20px;
+  font-weight: bolder;
+  text-shadow: 1px 1px 1px silver;
+  font-style: italic;
+
+}
+
+.divBox {
+  text-align: center;
+}
+
+.inputFile {
+  text-align: center;
+}
+
+.inputText {
+  border-color: lightblue;
+  width: 30%;
+  line-height: 3;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+label {
+  background: #ddd;
+  padding: 10px 30px;
+  border-radius: 10px;
+  display: inline-block;
+  position: relative;
+}
+label::after {
+  content: "選択されていません";
+  font-size: 14px;
+  height: 20px;
+  line-height: 20px;
+  position: absolute;
+  right: -140px;
+  top: calc(50% - 10px);
+}
+label.changed::after {
+  content: "";
+}
+.filename {
+  font-size: 12px;
+}
+
+.register {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #ffffff;
+  background-image: linear-gradient(#CCDBFD 0%, #67ceff 100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #5e7fca;
+}
+
+.register:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+}
