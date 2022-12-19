@@ -1,0 +1,12 @@
+h1 {
+  text-align: center;
+  color: #5e7fca;
+  font-size: 20px;
+  font-weight: bolder;
+  text-shadow: 1px 1px 1px silver;
+  font-style: italic;
+}
+
+div.aTag {
+  text-align: center;
+}

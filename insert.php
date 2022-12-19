@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="style_insert.css">
   <title>登録</title>
 </head>
 <body>
@@ -26,7 +27,7 @@
 
   //ワンタイムチケットの中身が空、ポストされなかった場合、強制終了
   if ( $ticket === "" ){
-    die('不正な操作が行われました<br>');
+    die('<h1>不正な操作が行われました</h1><br>');
   }
 
   //ポストされたワンタイムチケットとセッション変数が一致したら、処理を行う
@@ -34,9 +35,9 @@
     //OK
   }
   else{
-    echo '二重送信が行われました<br>';
-    echo '<a href="http://localhost/PBL_monday/register.php">画面を戻る</a>';
-    exit();
+    echo '<h1>二重送信が行われました</h1><br>';
+    echo '<div class="aTag"><a href="http://localhost/PBL_monday/register.php">画面を戻る</a></div>';
+    die();
   }
 
   //database information
@@ -63,20 +64,20 @@
   echo $eventcontent.'<br>';*/
 
   if ( $eventname == "" || $eventdate == "" || $eventplace == "" || $filename == "" ){
-    echo "全ての項目を入力してください<br>";
-    echo '<a href="http://localhost/PBL_monday/register.php">画面を戻る</a>';
+    echo "<h1>全ての項目を入力してください</h1><br>";
+    echo '<div class="aTag"><a href="http://localhost/PBL_monday/register.php">画面を戻る</a></div>';
     exit();
   }
   else{
     if ( is_uploaded_file($tempfile) ){
       if ( $_FILES['eventfile']['type'] == 'image/jpeg' || $_FILES['eventfile']['type'] == 'image/png' || $_FILES['eventfile']['type'] == 'image/jpg' ){
-        echo '画像がアップロードされました<br>';
-        echo "ファイルの種類は".$_FILES['eventfile']['type']."です。";
+        //echo '画像がアップロードされました<br>';
+        //echo "ファイルの種類は".$_FILES['eventfile']['type']."です。";
         echo '<br>';
       }
       else{
-        echo "画像ファイルをアップロードしてください<br>";
-        echo '<a href="http://localhost/PBL_monday/register.php">画面を戻る</a>';
+        echo "<h1>画像ファイルをアップロードしてください</h1><br>";
+        echo '<div class="aTag"><a href="http://localhost/PBL_monday/register.php">画面を戻る</a></div>';
         exit();
       }
     }
@@ -116,11 +117,12 @@
     $stmt->execute();
   }
   catch(PDOException $err){
+    echo '<h1>データ登録に失敗しました</h1>';
     exit($err->getMessage());
   }
 
-  echo '<p>登録が完了しました</p>';
+  echo '<h1>登録が完了しました</h1>';
   ?>
-  <a href="http://localhost/PBL_monday/register.php">画面を戻る</a>
+  <div class="aTag"><a href="http://localhost/PBL_monday/register.php">画面を戻る</a></div>
 </body>
 </html>
