@@ -73,6 +73,7 @@
       if ( $_FILES['eventfile']['type'] == 'image/jpeg' || $_FILES['eventfile']['type'] == 'image/png' || $_FILES['eventfile']['type'] == 'image/jpg' ){
         //echo '画像がアップロードされました<br>';
         //echo "ファイルの種類は".$_FILES['eventfile']['type']."です。";
+        $filepath = 'image/'.$filename;
         echo '<br>';
       }
       else{
@@ -100,7 +101,7 @@
     //型指定を行いバインドする
     $stmt->bindValue(':id', $id);
     $stmt->bindValue(':name', $eventname);
-    $stmt->bindValue(':image', $filename);
+    $stmt->bindValue(':image', $filepath);
     $stmt->bindValue(':event_date', $eventdate);
     $stmt->bindValue(':place', $eventplace);
     $stmt->bindValue(':content', $eventcontent);

@@ -9,23 +9,55 @@ $_SESSION['ticket'] = $ticket;
 <html lang="ja">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link href="style_register.css" rel="stylesheet" type="text/css" media="all">
     <title>イベント登録</title>
+    <!--グローバルナビゲーションについては、外部CSSファイルではcssレイアウトが効かなかったため直接記述-->
+    <style>
+    *{box-sizing: border-box;}
+    ul.gnav-navi-1{
+      background: #333;
+      padding: 0;
+      text-align: center;
+    }
+    ul.gnav-navi-1 li{
+      display: inline-block;
+    }
+    ul.gnav-navi-1 li a{
+      display: block;
+      padding: 1em;
+      color: #fff;
+      text-decoration: none;
+    }
+    ul.gnav-navi-1 a::first-line{
+      font-size: 16px;
+      font-weight: bold;
+    }
+    ul.gnav-navi-1 li:hover{
+      background: #FF7F50;
+    }
+    </style>
     <script src="register.js" charset="utf-8"></script>
   </head>
   <body>
     <p class="logo">Evendertok</p>
+    <nav>
+      <ul class="gnav-navi-1">
+        <li><a href="#">TOP</a></li>
+        <li><a href="#">参加者一覧</a></li>
+        <li><a href="#">ABOUT</a></li>
+      </ul>
+    </nav>
     <div class="divBox">
       <form action="http://localhost/PBL_monday/insert.php" enctype="multipart/form-data" method="post">
-        <p><input type="text" class="inputText" placeholder="イベント名" onfocus="clickBox(this)" onblur="notClick(this)" name="eventname"></p>
-        <p><input type="text" class="inputText" placeholder="開催日" onfocus="clickBox(this)" onblur="notClick(this)" name="eventdate"></p>
-        <p><input type="text" class="inputText" placeholder="開催場所" onfocus="clickBox(this)" onblur="notClick(this)" name="eventplace"></p>
+        <p><input type="text" class="inputText" placeholder="イベント名" onfocus="clickBox(this)" onblur="notClick(this)" name="eventname" required></p>
+        <p><input type="text" class="inputText" placeholder="開催日" onfocus="clickBox(this)" onblur="notClick(this)" name="eventdate" required></p>
+        <p><input type="text" class="inputText" placeholder="開催場所" onfocus="clickBox(this)" onblur="notClick(this)" name="eventplace" required></p>
         <p><textarea class="inputText" placeholder="内容" onfocus="clickBox(this)" onblur="notClick(this)" name="eventcontent"></textarea></p>
         <div id="input-group">
           <input type="file" name="eventfile" id="01" name="01"><label for="01" id="input-label">ファイルを選択してください</label>
         </div>
-        <p></p>
-        <p><input type="submit" class="register" value="開催を予約する"></p>
+        <p><input type="submit" id="regist" class="register" value="開催を予約する"></p>
         <input type="hidden" name="ticket" value="<?=$ticket?>">
       </form>
     </div>
