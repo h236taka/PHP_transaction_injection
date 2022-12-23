@@ -12,31 +12,6 @@ $_SESSION['ticket'] = $ticket;
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link href="style_register.css" rel="stylesheet" type="text/css" media="all">
     <title>イベント登録</title>
-    <!--グローバルナビゲーションについては、外部CSSファイルではcssレイアウトが効かなかったため直接記述-->
-    <style>
-    *{box-sizing: border-box;}
-    ul.gnav-navi-1{
-      background: #333;
-      padding: 0;
-      text-align: center;
-    }
-    ul.gnav-navi-1 li{
-      display: inline-block;
-    }
-    ul.gnav-navi-1 li a{
-      display: block;
-      padding: 1em;
-      color: #fff;
-      text-decoration: none;
-    }
-    ul.gnav-navi-1 a::first-line{
-      font-size: 16px;
-      font-weight: bold;
-    }
-    ul.gnav-navi-1 li:hover{
-      background: #FF7F50;
-    }
-    </style>
     <script src="register.js" charset="utf-8"></script>
   </head>
   <body>

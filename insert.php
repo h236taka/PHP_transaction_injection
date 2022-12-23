@@ -2,10 +2,18 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="style_insert.css">
+  <link rel="stylesheet" href="./style_insert.css" type="text/css" media="all">
   <title>登録</title>
 </head>
 <body>
+  <p class="logo1">Evendertok</p>
+  <nav>
+    <ul class="gnav-navi-1">
+      <li><a href="#">TOP</a></li>
+      <li><a href="#">参加者一覧</a></li>
+      <li><a href="#">ABOUT</a></li>
+    </ul>
+  </nav>
   <?php
 
   session_start();
@@ -65,7 +73,7 @@
         //echo '画像がアップロードされました<br>';
         //echo "ファイルの種類は".$_FILES['eventfile']['type']."です。";
         $filepath = 'image/'.$filename;
-        $filepath = "image/".basename($_FILES['eventfile']['name']);  
+        $filepath = "image/".basename($_FILES['eventfile']['name']);
         echo '<br>';
       }
       else{

@@ -5,7 +5,6 @@
   font-weight: bolder;
   text-shadow: 1px 1px 1px silver;
   font-style: italic;
-
 }
 
 .divBox {
@@ -68,7 +67,7 @@ label.changed::after {
 }
 
 ul.gnav-navi-1{
-  background: #c71585;
+  background: #333;
   padding: 0;
   text-align: center;
 }
@@ -86,4 +85,12 @@ ul.gnav-navi-1 li a{
 ul.gnav-navi-1 a::first-line{
   font-size: 16px;
   font-weight: bold;
+}
+
+ul.gnav-navi-1 li:hover{
+  background: #FF7F50;
+}
+
+@media screen and (min-width:1000px) {
+
 }
