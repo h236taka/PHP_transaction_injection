@@ -64,11 +64,8 @@
       if ( $_FILES['eventfile']['type'] === 'image/jpeg' || $_FILES['eventfile']['type'] === 'image/png' || $_FILES['eventfile']['type'] === 'image/jpg' ){
         //echo '画像がアップロードされました<br>';
         //echo "ファイルの種類は".$_FILES['eventfile']['type']."です。";
-<<<<<<< HEAD
         $filepath = 'image/'.$filename;
-=======
         $filepath = "image/".basename($_FILES['eventfile']['name']);  
->>>>>>> 6a6932220f349c8442ccf954d70ca00c570d6d16
         echo '<br>';
       }
       else{
