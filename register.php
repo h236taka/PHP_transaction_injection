@@ -17,9 +17,9 @@ $_SESSION['ticket'] = $ticket;
     <p class="logo">Evendertok</p>
     <div class="divBox">
       <form action="http://localhost/PBL_monday/insert.php" enctype="multipart/form-data" method="post">
-        <p><input type="text" class="inputText" placeholder="イベント名" onfocus="clickBox(this)" onblur="notClick(this)" name="eventname"></p>
-        <p><input type="text" class="inputText" placeholder="開催日" onfocus="clickBox(this)" onblur="notClick(this)" name="eventdate"></p>
-        <p><input type="text" class="inputText" placeholder="開催場所" onfocus="clickBox(this)" onblur="notClick(this)" name="eventplace"></p>
+        <p><input type="text" class="inputText" placeholder="イベント名" onfocus="clickBox(this)" onblur="notClick(this)" name="eventname" required></p>
+        <p><input type="text" class="inputText" placeholder="開催日" onfocus="clickBox(this)" onblur="notClick(this)" name="eventdate" required></p>
+        <p><input type="text" class="inputText" placeholder="開催場所" onfocus="clickBox(this)" onblur="notClick(this)" name="eventplace" required></p>
         <p><textarea class="inputText" placeholder="内容" onfocus="clickBox(this)" onblur="notClick(this)" name="eventcontent"></textarea></p>
         <div id="input-group">
           <input type="file" name="eventfile" id="01" name="01"><label for="01" id="input-label">ファイルを選択してください</label>

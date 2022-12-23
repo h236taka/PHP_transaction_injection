@@ -11,16 +11,9 @@
   session_start();
   //register.phpのticket変数を取得
   $ticket = isset($_POST['ticket']) ? $_POST['ticket'] : '';
-  /*if ( !isset($_POST['ticket']) ){
-    $ticket = $_POST['ticket'];
-  }*/
 
   //セッション変数に保存されたワンタイムチケットを取得
   $saveTicket = isset($_SESSION['ticket']) ? $_SESSION['ticket'] : '';
-  /*if ( !isset($_SESSION['ticket']) ){
-    $saveTicket = $_SESSION['ticket'];
-  }*/
-
 
   //セッション変数を解放
   unset($_SESSION['ticket']);
@@ -52,8 +45,6 @@
   $tempfile = $_FILES['eventfile']['tmp_name'];
   $filename = $_FILES['eventfile']['name'];
 
-  //$filename = 'file'; //仮に設定
-
   $eventdate = $_POST['eventdate'];
   $eventplace = $_POST['eventplace'];
   $eventcontent = $_POST['eventcontent'];
@@ -70,9 +61,10 @@
   }
   else{
     if ( is_uploaded_file($tempfile) ){
-      if ( $_FILES['eventfile']['type'] == 'image/jpeg' || $_FILES['eventfile']['type'] == 'image/png' || $_FILES['eventfile']['type'] == 'image/jpg' ){
+      if ( $_FILES['eventfile']['type'] === 'image/jpeg' || $_FILES['eventfile']['type'] === 'image/png' || $_FILES['eventfile']['type'] === 'image/jpg' ){
         //echo '画像がアップロードされました<br>';
         //echo "ファイルの種類は".$_FILES['eventfile']['type']."です。";
+        $filepath = "image/".basename($_FILES['eventfile']['name']);  
         echo '<br>';
       }
       else{
@@ -80,6 +72,7 @@
         echo '<div class="aTag"><a href="http://localhost/PBL_monday/register.php">画面を戻る</a></div>';
         exit();
       }
+
     }
 
     try {
@@ -100,7 +93,7 @@
     //型指定を行いバインドする
     $stmt->bindValue(':id', $id);
     $stmt->bindValue(':name', $eventname);
-    $stmt->bindValue(':image', $filename);
+    $stmt->bindValue(':image', $filepath);
     $stmt->bindValue(':event_date', $eventdate);
     $stmt->bindValue(':place', $eventplace);
     $stmt->bindValue(':content', $eventcontent);
