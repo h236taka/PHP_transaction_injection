@@ -28,7 +28,9 @@
 
   //ワンタイムチケットの中身が空、ポストされなかった場合、強制終了
   if ( $ticket === "" ){
-    die('<h1>不正な操作が行われました</h1><br>');
+    echo '<h1>通信エラーが発生しました</h1><br>';
+    echo '<footer><p>(c)copy right</p><footer>';
+    exit();
   }
 
   //ポストされたワンタイムチケットとセッション変数が一致したら、処理を行う
@@ -38,7 +40,8 @@
   else{
     echo '<h1>二重送信が行われました</h1><br>';
     echo '<div class="aTag"><a href="http://localhost/PBL_monday/register.php">画面を戻る</a></div>';
-    die();
+    echo '<footer><p>(c)copy right</p><footer>';
+    exit();
   }
 
   //database information
@@ -65,6 +68,7 @@
   if ( $eventname == "" || $eventdate == "" || $eventplace == "" || $filename == "" ){
     echo "<h1>全ての項目を入力してください</h1><br>";
     echo '<div class="aTag"><a href="http://localhost/PBL_monday/register.php">画面を戻る</a></div>';
+    echo '<footer><p>(c)copy right</p><footer>';
     exit();
   }
   else{
@@ -72,13 +76,13 @@
       if ( $_FILES['eventfile']['type'] === 'image/jpeg' || $_FILES['eventfile']['type'] === 'image/png' || $_FILES['eventfile']['type'] === 'image/jpg' ){
         //echo '画像がアップロードされました<br>';
         //echo "ファイルの種類は".$_FILES['eventfile']['type']."です。";
-        $filepath = 'image/'.$filename;
         $filepath = "image/".basename($_FILES['eventfile']['name']);
         echo '<br>';
       }
       else{
         echo "<h1>画像ファイルをアップロードしてください</h1><br>";
         echo '<div class="aTag"><a href="http://localhost/PBL_monday/register.php">画面を戻る</a></div>';
+        echo '<footer><p>(c)copy right</p><footer>';
         exit();
       }
 
@@ -126,5 +130,8 @@
   echo '<h1>登録が完了しました</h1>';
   ?>
   <div class="aTag"><a href="http://localhost/PBL_monday/register.php">画面を戻る</a></div>
+  <footer>
+    <p>(c)copy right</p>
+  </footer>
 </body>
 </html>

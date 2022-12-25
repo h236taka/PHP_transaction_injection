@@ -51,5 +51,8 @@ $_SESSION['ticket'] = $ticket;
     });
     </script>
 
+    <footer>
+      <p>(c)copy right</p>
+    </footer>
   </body>
 </html>
